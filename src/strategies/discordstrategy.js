@@ -1,6 +1,5 @@
 const DiscordStrategy = require("passport-discord").Strategy;
 const passport = require("passport");
-const DiscordUser = require("../models/DiscordUser");
 
 var scopes = ["identify", "guilds"];
 
@@ -9,10 +8,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (user, done) => {
-  // const user = DiscordUser.findById(id);
-  // if (user) {
-    done(null, user);
-  // }
+  done(null, user);
 });
 
 passport.use(
@@ -28,21 +24,6 @@ passport.use(
         id: profile.id,
         username: profile.username,
       });
-      // try {
-      //   const user = await DiscordUser.findOne({ discordId: profile.id });
-      //   if (user) {
-      //     done(null, user);
-      //   } else {
-      //     const newUser = await DiscordUser.create({
-      //       discordId: profile.id,
-      //       username: profile.username,
-      //     });
-      //     const savedUser = await newUser.save();
-      //     done(null, savedUser);
-      //   }
-      // } catch (error) {
-      //   done(error, null);
-      // }
     }
   )
 );

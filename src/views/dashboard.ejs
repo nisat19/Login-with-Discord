@@ -1,7 +1,14 @@
 <%- include('partials/header') -%>
-<div>
-  <h1>Hello <%= username %> (<%= discordId %>)</h1>
-</div>
+<article class="message is-dark">
+  <div class="message-header">
+    <p>Welcome</p>
+    <button class="delete" aria-label="delete"></button>
+  </div>
+  <div class="message-body">
+    <p><strong>Name: </strong><%= username %></p>
+    <p><strong>Discord ID: </strong><%= discordId %></p>
+  </div>
+</article>
 <div class="discord-button">
   <form action="/auth/logout">
     <button
